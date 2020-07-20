@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', ['$scope', '$filter', '$timeout', function($scope, $filter, $timeout) {
+myApp.controller('mainController', ['$scope', '$filter', function($scope, $filter) {
     
     $scope.handle = '';
     
@@ -8,19 +8,16 @@ myApp.controller('mainController', ['$scope', '$filter', '$timeout', function($s
         return $filter('lowercase')($scope.handle);
     };
     
-    $scope.$watch('handle', function(newValue, oldValue) {
-        
-        console.info('Changed!');
-        console.log('Old:' + oldValue);
-        console.log('New:' + newValue);
-        
-    });
+    $scope.characters = 5;
     
-    $timeout(function() {
-       
-        $scope.handle = 'newtwitterhandle';
-        console.log('Scope changed!');
+    $scope.rules = [
+      
+        { rulename: "Must be 5 characters" },
+        { rulename: "Must not be used elsewhere" },
+        { rulename: "Must be cool" }
         
-    }, 3000);
+    ];
+    
+    console.log($scope.rules);
     
 }]);
