@@ -1,7 +1,7 @@
-var myApp = angular.module('myApp', ['ngMessages', 'ngResource']);
+var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', function($scope, $log, $filter, $resource) {
+myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
     
-    console.log($resource);
+    console.log($scope);
     
-});
+}]);
